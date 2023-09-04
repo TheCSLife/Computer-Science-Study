@@ -81,12 +81,12 @@ init: README
 
 ## Classification
 
-### Data Structure
-- Stack
-
 ### Algorithm
 - Complexity
   - Time Complexity
-  - Space Complexity 
+  - Space Complexity
+
+### Data Structure
+- Stack
 
 <br><br>
