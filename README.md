@@ -37,8 +37,9 @@
 
 - Tool : GitHub & Discord
 
-:white_large_square:
-:white_check_mark:
+- :white_large_square: 
+- :white_check_mark: 
+- ☑️ : 지각
 
 |Index|학습기간|박세윤|지민성|
 | ------ | ------ | ------ | ------ |
@@ -49,8 +50,7 @@
 
 ## Commit / Pull Request Convention
 
-- 최소 단위 Commit 지향한다.
-  - 적어도 페이지 별로는 반드시 Commit 구분한다.
+- 페이지 단위 Commit
  
 - Pull Request Message는 Commit Message와 동일하게 작성한다.
 
@@ -69,7 +69,7 @@ docs-update: Data Structure / Stack vs Queue
 ## 문서 삭제
 docs-delete: Data Structure / Stack vs Queue
 
-## 최초 설정
+## 설정
 init: README
 ```
 
