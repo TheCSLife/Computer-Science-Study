@@ -83,15 +83,3 @@ init: README
 | 1주차 | 2023.09.05 ~ 2023.09.10 | Stack vs Queue | Stack vs Queue |
 
 <br><br>
-
-## Classification
-
-### Algorithm
-- Complexity
-  - Time Complexity
-  - Space Complexity
-
-### Data Structure
-- Stack
-
-<br><br>
