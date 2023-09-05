@@ -77,6 +77,10 @@ init: README
 
 ## Learning Record
 
+|Index|학습기간| 박세윤            | 지민성            |
+| ------ | ------ |----------------|----------------|
+| 1주차 | 2023.09.05 ~ 2023.09.10 | Stack vs Queue | Stack vs Queue |
+
 <br><br>
 
 ## Classification
