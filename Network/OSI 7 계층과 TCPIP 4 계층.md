@@ -303,7 +303,7 @@
 ![img_8.png](../Img/img_8.png)
 
 - OSI 7 계층에서 데이터를 전송할 때 각 층마다 별도로 인식할 수 있는 헤더를 각각 붙이게 되는데, 이 과정을 캡슐화 라고 한다.(Encapsulation)
-  - 반대로 헤더가 벗겨지는 것을 디캡슐화(De-encapsulation)
+  - 반대로 헤더가 벗겨지는 것을 디캡슐화(De-Encapsulation)
 
 <br>
 
