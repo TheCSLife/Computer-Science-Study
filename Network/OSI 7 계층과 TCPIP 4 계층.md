@@ -19,7 +19,8 @@
 
 <br>
 
-![img.png](../Img/img.png)
+![](https://velog.velcdn.com/images/yun12343/post/73ed4bf5-9df2-4b13-9775-8f46e924afd6/image.png)
+
 
 - OSI 7 계층은 위의 그림과 같이, 7단계의 계층들의 순서에 따라 각 계층에서 담당하는 기술과 방식으로 <span style="color:yellow">**데이터를 종단에서 반대쪽 종단으로 전달한다.**</span>
 
@@ -27,7 +28,7 @@
 
 ### ✅ Layer 1 : Physical Layer(물리 계층)
 
-![img_1.png](../Img/img_1.png)
+![](https://velog.velcdn.com/images/yun12343/post/cb069194-afc9-467f-8c2e-9fe21fb956eb/image.png)
 
 > - 데이터를 전기적 신호로 변환하여 전송하는 계층
 
@@ -40,7 +41,7 @@
 - `Bit` 단위를 사용
   - 전기적 신호 (0 or 1)을 나타낼 때 사용하는 단위
   - 0과 1은 Off, On를 나타낸다.
-  
+
 <br>
 
 - <span style="color:yellow">**단순 전기적 신호를 전달**</span>하는 역할
@@ -64,7 +65,8 @@
 
 ### ✅ Layer 2 : Data Link Layer(데이터 링크 계층)
 
-![img_2.png](../Img/img_2.png)
+![](https://velog.velcdn.com/images/yun12343/post/96e181bf-56e1-449d-b531-34a6c61e57b6/image.png)
+
 
 > - Physical Layer로 송수신되는 정보를 관리하여 안전하게 전달되도록 돕는 계층
 > - Mac 주소를 통해 통신
@@ -116,14 +118,15 @@
 
 - 대표 장비
   - 브릿지, 스위치(L2 Switch) 등
-- 대표 프로토콜 / 기술 
+- 대표 프로토콜 / 기술
   - MAC(물리적 주소), PPP(Point to Point Protocol) 등
 
 <br><br>
 
 ### ✅ Layer 3 : Network Layer(네트워크 계층)
 
-![img_3.png](../Img/img_3.png)
+![](https://velog.velcdn.com/images/yun12343/post/30116718-b642-45d1-869d-89dc31565a35/image.png)
+
 
 > - 데이터를 목적지까지 가장 안전하고 빠르게 전달하는 기능 담당
 > - 라우터를 통해 이동할 경로를 선택하여 IP 주소를 지정하고, 해당 경로에 따라 패킷을 전달
@@ -159,7 +162,8 @@
 
 ### ✅ Layer 4 : Transport Layer(전송 계층)
 
-![img_4.png](../Img/img_4.png)
+![](https://velog.velcdn.com/images/yun12343/post/e8870ee0-fdba-4d61-82c6-fcf791fc8611/image.png)
+
 
 > - TCP, UDP 프로토콜을 통해 통신을 활성화
 > - 포트를 열고, 프로그램들이 전송할 수 있도록 제공
@@ -205,7 +209,8 @@
 
 ### ✅ Layer 5 : Session Layer(세션 계층)
 
-![img_5.png](../Img/img_5.png)
+![](https://velog.velcdn.com/images/yun12343/post/071ab894-0487-41ba-9916-a62d4e8989db/image.png)
+
 
 > - 데이터가 통신하기 위한 논리적 연결 담당
 > - TCP/IP 세션을 만들고 없애는 책임을 가짐
@@ -249,7 +254,8 @@
 
 ### ✅ Layer 6 : Presentation Layer(표현 계층)
 
-![img_6.png](../Img/img_6.png)
+![](https://velog.velcdn.com/images/yun12343/post/23b8c048-50c3-4d06-925e-fadc23f9380e/image.png)
+
 
 > - 데이터 표현에 대한 독립성을 제공하고 암호화하는 역할을 담당
 > - 파일 인코딩, 명령어를 포장, 압축, 암호화
@@ -275,7 +281,8 @@
 
 ### ✅ Layer 7 : Application Layer(응용 계층)
 
-![img_7.png](../Img/img_7.png)
+![](https://velog.velcdn.com/images/yun12343/post/bd0bf4eb-ed9c-4809-a7ed-418815b8c678/image.png)
+
 
 > - 최종 목적지로서, 응용 프로세스와 직접 관계하여 일반적인 응용 서비스 수행
 > - 사용자 인터페이스, 전자우편, DB 관리 등의 서비스 제공
@@ -300,7 +307,8 @@
 
 ## 📌 OSI 7 계층의 계층간 관계
 
-![img_8.png](../Img/img_8.png)
+![](https://velog.velcdn.com/images/yun12343/post/ddae3e85-e74e-43df-9a68-a66520d161c1/image.png)
+
 
 - OSI 7 계층에서 데이터를 전송할 때 각 층마다 별도로 인식할 수 있는 헤더를 각각 붙이게 되는데, 이 과정을 캡슐화 라고 한다.(Encapsulation)
   - 반대로 헤더가 벗겨지는 것을 디캡슐화(De-Encapsulation)
@@ -321,7 +329,9 @@
 
 ### ✅ TCP/IP 4 계층이란?
 
-![img_9.png](../Img/img_9.png)
+![](https://velog.velcdn.com/images/yun12343/post/3c9b1c97-609e-4ced-a9c3-43ce88da315f/image.png)
+
+
 
 <br>
 
@@ -363,7 +373,9 @@ but > <span style="color:yellow">**TCP/IP 4 계층 모델은 OSI 7 계층 모델
 
 ## 📌 OSI 7 계층 vs TCP/IP 4 계층
 
-![img_10.png](../Img/img_10.png)
+![](https://velog.velcdn.com/images/yun12343/post/20571162-c75c-4881-b18b-c8e4ad4ef3a1/image.png)
+
+
 
 <br><br>
 
