@@ -45,15 +45,13 @@
 |Index|학습기간|박세윤|지민성|
 | ------ | ------ | ------ | ------ |
 | 벌점 | 3점마다 커피 | 0 | 0 |
-| 1주차 | 2023.09.05 ~ 2023.09.10 |:white_large_square: |:white_large_square:|
+| 1주차 | 2023.09.05 ~ 2023.09.10 |:white_check_mark: |:white_large_square:|
 
 <br><br>
 
 ## Commit / Pull Request Convention
 
 - 페이지 단위 Commit
- 
-- Pull Request Message는 Commit Message와 동일하게 작성한다.
 
 - `상태: 디렉토리 / 주제`
 
@@ -76,10 +74,20 @@ init: README
 
 <br><br>
 
+- Pull Request Convention
+
+- `Week N : Name / Part`
+
+```md
+Week 1 : ParkSeYun / Network
+```
+
+<br><br>
+
 ## Learning Record
 
 |Index|학습기간| 박세윤            | 지민성            |
 | ------ | ------ |----------------|----------------|
-| 1주차 | 2023.09.05 ~ 2023.09.10 | Stack vs Queue | Stack vs Queue |
+| 1주차 | 2023.09.05 ~ 2023.09.10 | OSI 7 계층과 TC/ICP 4 계층 <br> TCP/IP 흐름 제어 및 혼잡 제어 | ?? |
 
 <br><br>
