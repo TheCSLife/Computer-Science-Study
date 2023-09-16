@@ -2,15 +2,15 @@
 
 <br>
 
-## 📌 Stream
+## 📌 Stream API
 
 - 기존 Java는 (Java 8 이전) 객체 지향 언어로서, 함수형 프로그래밍이 불가능했지만, JDK8 부터 Stream, 람다식, 함수형 인터페이스를 지원
 
-    - Java로 함수형 프로그래밍이 가능해짐
+  - Java로 함수형 프로그래밍이 가능해짐
 
-- Stream : 데이터를 추상화하고 처리하는데 자주 사용하는 함수들을 미리 정의
+- **Stream API** : 데이터를 추상화하고 처리하는데 자주 사용하는 함수들을 미리 정의
 
-    - 추상화 : 데이터의 종류에 상관 없이 같은 방식으로 데이터를 처리할 수 있다는 것 => 재사용성 높임
+  - 추상화 : 데이터의 종류에 상관 없이 같은 방식으로 데이터를 처리할 수 있다는 것 => 재사용성 높임
 
 ```java
 // Stream 사용 전
@@ -47,12 +47,12 @@ arrayStream.sorted().forEach(System.out::println);
 
 <br><br>
 
-### ✅ Stream의 특징
+### ✅ Stream API 의 특징
 
 1. 원본 데이터 변경 X
 
 ```java
-
+List<String> sortedList = nameStream.sorted().collect(Collections.toList());
 ```
 
 <br>
@@ -60,7 +60,15 @@ arrayStream.sorted().forEach(System.out::println);
 2. 일회용
 
 ```java
+userStream.sorted().forEach(System.out::print);
 
+// 스트림이 이미 사용되어 닫혔으므로 에러 발생
+int count = userStream.count(); 
+
+// IllegalStateException 발생
+java.lang.IllegalStateException: stream has already been operated upon or closed
+    at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:229)
+    at java.util.stream.ReferencePipeline.noneMatch(ReferencePipeline.java:459)
 ```
 
 
@@ -69,8 +77,43 @@ arrayStream.sorted().forEach(System.out::println);
 3. 내부 반복 방식으로 작업
 
 ```java
-
+ // 반복문이 forEach라는 함수 내부에 숨겨져 있다.
+nameStream.forEach(System.out::println);
 ```
+
+- 간결
+
+<br><br>
+
+### ✅ Stream API 연산 종류
+
+1. 생성 단계
+2. 가공 단계
+3. 결과 도출 단계
+
+```java
+List<String> list = Arrays.asList("a1", "a2", "b1", "c2", "c1");
+
+list
+    .stream()							// 생성하기
+    .filter(s -> s.startsWith("c"))			// 가공하기
+    .map(String::toUpperCase)			// 가공하기
+    .sorted()							// 가공하기
+    .count();							// 결과만들기
+```
+
+- 이렇게 Stream 연산이 연결된 것을 연산 파이프라인 이라고 한다.
+
+- 중간 연산은 여러번 이어서 수행 가능하다.
+
+- 매개변수로 함수형 인터페이스(Functional Interface)를 받도록 되어있다.
+
+- 간혹 최종 연산 중 값을 반환하지 않는 경우도 있긴 하다. ex> forEach
+
+- Stream 연산의 자세한 종류들과, 활용법, 주의 사항은 아래 두 링크가 잘 설명되어 있다.
+
+https://mangkyu.tistory.com/114
+https://mangkyu.tistory.com/115
 
 <br><br>
 
@@ -82,14 +125,14 @@ arrayStream.sorted().forEach(System.out::println);
 
 - 메서드를 하나의 식으로 압축 표현한 것
 
-    - 코드를 훨씬 간결하게 표현 가능
-    - 불필요한 코드를 줄이고 가독성을 높인다.
-    - 메서드를 매개변수로 전달 가능
-    - 메서드의 이름이 필요 없기에, 익명 함수(Anonymous Function)의 느낌
+  - 코드를 훨씬 간결하게 표현 가능
+  - 불필요한 코드를 줄이고 가독성을 높인다.
+  - 메서드를 매개변수로 전달 가능
+  - 메서드의 이름이 필요 없기에, 익명 함수(Anonymous Function)의 느낌
 
-- Stream 연산들은 매개변수로 함수형 인터페이스(Function Interface)를 받는다.
+- Stream 연산들은 **매개변수**로 함수형 인터페이스(Function Interface)를 받는다.
 
-- 람다식은 반환값으로 함수형 인터페이스를 받는다.
+- 람다식은 **반환값**으로 함수형 인터페이스를 받는다.
 
 ```java
 // 기존 방식
@@ -117,11 +160,11 @@ public String hello() {
 
 - 개발자의 의도가 명확히 드러남
 
-    - 가독성 증가
+  - 가독성 증가
 
 - 함수를 만드는 과정 생략
 
-    - 생산성 증가
+  - 생산성 증가
 
 - 병렬 프로그래밍에 용이
 
@@ -143,7 +186,7 @@ public String hello() {
 
 - Java의 람다식이 함수형 인터페이스를 return한다.
 
-- @FunctionalInterface 어노테이션을 활용하여 단 하나의 추상 메소드만 갖도록 제한한다.
+- **@FunctionalInterface** 어노테이션을 활용하여 단 하나의 추상 메소드만 갖도록 제한한다.
 
 ```java
 // 기존 코드
@@ -181,7 +224,7 @@ public class Lambda {
 
 - @FunctionalInterface에서 여러 함수를 선언하면 컴파일 에러가 발생한다.
 
-    - 1개의 함수만 갖도록 제한!
+  - 1개의 함수만 갖도록 제한!
 
 <br><br>
 
@@ -225,9 +268,9 @@ System.out.println(supplier.get());
 
 - 반환값 : 함수형 인터페이스
 
-- void accept(T t)를 추상메서드로 가짐
+- **void accept(T t)**를 추상메서드로 가짐
 
-- andThen 함수 : 하나의 함수가 끝난 후, Consumer를 연쇄적으로 이용
+- **andThen** 함수 : 하나의 함수가 끝난 후, Consumer를 연쇄적으로 이용
 
 ```java
 // 정의
@@ -259,15 +302,15 @@ Hello World
 
 - R apply(T t)를 추상메소드로 가짐
 
-- andThen 함수 제공
+- **andThen** 함수 제공
 
-- compose 함수 제공
+- **compose** 함수 제공
 
-    - 첫 함수 실행 이전에 먼저 함수를 실행하여 연쇄적으로 연결해줌
+  - 첫 함수 실행 이전에 먼저 함수를 실행하여 연쇄적으로 연결해줌
 
-- identity 함수 제공
+- **identity** 함수 제공
 
-    - 자기 자신을 반환하는 static 함수
+  - 자기 자신을 반환하는 static 함수
 
 ```java
 // 정의
@@ -346,9 +389,9 @@ predicate.test("Hello World");
 
 - 함수형 인터페이스를 람다식이 아닌 일반 메소드를 참조시켜 선언하는 방법
 
-    - 조건 1 : 함수형 인터페이스 매개변수 타입 = 메소드 매개변수 타입
-    - 조건 2 : 함수형 인터페이스 매개변수 개수 = 메소드 매개변수 개수
-    - 조건 3 : 함수형 인터페이스 반환형 = 메소드 반환형
+  - 조건 1 : 함수형 인터페이스 매개변수 타입 = 메소드 매개변수 타입
+  - 조건 2 : 함수형 인터페이스 매개변수 개수 = 메소드 매개변수 개수
+  - 조건 3 : 함수형 인터페이스 반환형 = 메소드 반환형
 
 - 참조 가능한 메소드 : 일반 메소드, static 메소드, 생성자
 
@@ -372,9 +415,9 @@ function.apply("Hello World");
 
 - 3가지 조건
 
-    - 매개변수 X (타입 조건 넘김)
-    - 매개변수 개수 : 0
-    - 반환형 : int
+  - 매개변수 X (타입 조건 넘김)
+  - 매개변수 개수 : 0
+  - 반환형 : int
 
 <br>
 
@@ -428,10 +471,247 @@ Supplier<String> supplier = String::new;
 
 <br><br>
 
+## 📌 인터페이스의 default 메서드와 static 메서드
+
+### ✅ 인터페이스에 default 메소드가 필요한 이유
+
+- default 메소드는 다른 인터페이스의 일반적인 메소드들 처럼 암시적으로 public (명시 필요 X)
+
+  - but> 인터페이스의 일반 메소드들과 다르게, 메소드 앞에 `default`라는 키워드가 선언된다.
+
+```java
+public interface MyInterface {
+    
+    // 일반적인 메소드들 ...
+    
+    // default 메소드
+    default void defaultMethod() {
+        // 구현
+    }
+}
+```
+
+- 일반적인 인터페이스 메소드들은, 모든 구현 클래스에서 강제적으로 구현 해야 한다.
+
+  - 구현 클래스가 늘어날 수록, 위는 곤혹스럽다.
+
+- 인터페이스의 default 메서드는 자동적으로 구현 클래스에서도 사용할 수 있어, 구현 클래스를 수정할 필요가 없어지고, 이를 깔끔하게 `하위 호환`이 가능하다고 말한다.
+
+- default 메소드의 가장 일반적인 사용 목적
+
+  - 구현 클래스를 파괴하지 않으면서 점진적으로 추가적인 기능을 제공하는 것
+  - 기존의 추상 메소드에 기능을 덧붙이는 것
+
 <br><br>
+
+### ✅ default 메소드 주의사항
+
+- 자바는 인터페이스의 다중 상속을 허용한다.
+
+  - 같은 default 메소드를 정의한 여러개의 인터페이스를 한 클래스가 다중 상속하면 충돌이 발생하여, 컴파일되지 않는다
+
+    - `Diamond Problem` 이라고 부른다.
+
+- 이러한 문제를 해결하기 위해, 메소드에 명시적으로 구현해야 한다.
+
+```java
+public interface Phone {
+    
+    String call();
+    
+    String message();
+    
+    default String turnAlarmOn() {
+        return "Turning the phone alarm on.";
+    }
+    
+    default String turnAlarmOff() {
+        return "Turning the phone alarm off.";
+    }
+}
+```
+
+```java
+public interface Alarm {
+
+    default String turnAlarmOn() {
+        return "Turning the alarm on.";
+    }
+    
+    default String turnAlarmOff() {
+        return "Turning the alarm off.";
+    }
+}
+```
+
+```java
+public iphone Car implements Phone, Alarm {
+
+	// Phone interface의 default 메소드 사용
+	@Override
+    public String turnAlarmOn() {
+        return Phone.super.turnAlarmOn();
+    }
+
+	// Alarm interface의 default 메소드 사용
+    @Override
+    public String turnAlarmOff() {
+        return Alarm.super.turnAlarmOff();
+    }
+}
+```
+
+### ✅ Static 인터페이스 메소드
+
+- static 메소드는 특정 객체에 속하지 않기 때문에, 인터페이스를 구현하는 클래스 API의 한 부분이 아니다.
+
+  - 메소드며 앞에 인터페이스 이름을 넣어 호출해야 한다.
+
+```
+public interface Vehicle {
+    
+    static int getHorsePower(int rpm, int torque) {
+        return (rpm * torque) / 5252;
+    }
+}
+```
+
+```java
+Vehicle.getHorsePower(2500, 480));
+```
+
+- 객체 생성 없이 한 공간에서 연관된 메소드들의 결합성을 높힌다.
+
+- 추상 클래스와 흡사하지만, 추상 클래스는 생성자, 상태, 동작으로 이루어져 있다.
+
+<br><br>
+
+## 📌 `Optional<T>`
+
+<br>
+
+### ✅  Optional?
+
+- 존재할 수도 있지만, 아닐수도 있는 객체 / null일수도 아닐수도 있는 객체를 감싸는 일종의 래퍼 클래스
+
+- 기존에는 조건문 예외 처리 과정을 통해 직접 null을 체크하여 번거로웠지만, optional을 사용하면 더욱 간편해진다.
+
+<br><br>
+
+### ✅ Optional의 효과
+
+- 명시적으로 해당 변수가 null의 가능성을 내포한다는 점을 시사
+
+- NPE(NullPointerException)의 유발 X
+
+- null 체크를 더욱 간편하게
+
+<br><br>
+
+### ✅ Optiona의 기본적인 사용방법
+
+- Optional 선언
+
+  - 제네릭을 통해 변수 선언 시 작성 타입 파라미터에 따라 래핑할 수 있는 객체의 타입 결정
+  - 관례적으로 변수명에 maybe 또는 opt를 붙이기도 함.
+```java
+Optional<Order> optOrder;
+```
+
+<br>
+
+- 객체 생성
+
+  - **Optional.empty()**
+    - null을 담는 Optional 객체 생성
+    - 비어 있는 객체는 Optional 내부에 미리 생성해놓은 싱글턴 인스턴스
+    ```java
+    Optional<User> optUser = Optional.empty();
+    ```
+  - **Optional.of(value)**
+
+    - null이 아닌 객체를 담고 있는 Optional 객체 생성
+    - null이 넘어오면 NPE 발생
+      ```java
+      Optinal<User> optUser = Optional.of(user);
+      ```
+  - **Optional.ofNullable(value)**
+
+    - null 여부를 모를 때 Optional 객체 생성
+      ```java
+      Optional<User> optUser = Optional.ofNullable(null);
+      ```
+
+<br>
+
+- Optional 객체 존재 여부 확인
+
+  - **isPresent()**
+
+    - boolean 반환
+    - 객체가 존재하면 true, 비었으면 false
+      ```java
+      Optional<String> optStr = Optional.ofNullable("test");
+      
+      if(optStr.isPresent())
+          System.out.println(optStr.get());
+      ```
+  - **isEmpty()**
+
+    - boolean 반환
+    - 객체가 비었으면 true, 존재하면 false
+       ```java
+       Optional<String> optStr = Optional.ofNullable("test");
+       
+       if(optStr.isEmtpy())
+           System.out.println("optStr은 null입니다.");
+       ```
+
+<br>
+
+Optional이 담고 있는 객체 접근
+
+- **get()**
+
+  - 비어 있는 객체 : NoSuchElementException
+     ```java
+     Optional<String> optionalWithValue = Optional.of("Hello, World!");
+
+     System.out.println(optionalWithValue.get());
+     ```
+
+- **orElse(T other)** : 옵셔널이 비어잇으면 파라미터로 입력한 인자 리턴
+
+  ```java
+  Optional<String> optionalWithValue = Optional.of("Hello, World!");
+  String value = optionalWithValue.orElse("Default Value");
+  System.out.println("Value: " + value);
+  ```
+
+- **orElseGet(Supplier<? extends T> other)** : 비어있는 Optional 객체는 넘어온 함수형 인자를 통해 생성된 객체 반환
+
+```java
+Optional<String> optionalWithValue = Optional.of("Hello, World!");
+String value = optionalWithValue.orElseGet(() -> generateDefaultValue());
+System.out.println("Value: " + value);
+```
+
+- **orElseThrow(Supplier<? extends X> exceptionSupplier)** : 비어있는 Optional 객체에 대해, 넘어온 함수형 인자를 통해 생성된 예외 던짐
+
+```java
+Optional<String> optionalWithValue = Optional.of("Hello, World!");
+String value = optionalWithValue.orElseThrow(() -> new IllegalStateException("Value is not present"));
+System.out.println("Value: " + value);
+```
+
+
+<br><br>
+
 
 ## 📌 참조
 
 - https://mangkyu.tistory.com/112
 - https://mslim8803.tistory.com/36
 - https://mangkyu.tistory.com/113
+- https://soft-dino.tistory.com/25
+- https://developsd.tistory.com/127
